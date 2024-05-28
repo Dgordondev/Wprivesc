@@ -60,7 +60,7 @@ function suid (){
 
 function userList (){
 	echo -e "${BLUECODE}Usuarios"
-    echo -e "==============${COLORCLOSE}"
+	echo -e "==============${COLORCLOSE}"
 	echo
 
 	USERLIST=$(awk -F: '$3 == 0 || ($3 >= 1000 && $3 <= 2000) {print $1}' /etc/passwd)
