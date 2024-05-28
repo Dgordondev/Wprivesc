@@ -1,5 +1,5 @@
 # Wprivesc
-Herramienta que facilita la deteccion de posibles vias de escalada de privilegios
+Herramienta que facilita la deteccion de posibles vias de escalada de privilegios en una maquina Linux.
 
 ## Uso
 1. Descarga el archivo wprivesc.sh
