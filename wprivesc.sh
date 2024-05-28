@@ -10,14 +10,14 @@ COLORCLOSE="\e[0m"
 
 function separator (){
 	echo
-	echo -e "${BLUECODE}=====================================================================${COLORCLOSE}"
+	echo -e "${BLUECODE}=================================================================${COLORCLOSE}"
 }
 
 function header (){
     echo ' __      __                                                     '
     echo '/\ \  __/\ \                 __                                 '
-    echo '\ \ \/\ \ \ \  _____   _ __ /\_\  __  __    __    ____    ___   '
-    echo ' \ \ \ \ \ \ \/\  __`\/\` __\/\ \/\ \/\ \ / __`\ / ,__\  / ___\ '
+    echo '\ \ \/\ \ \ \  _____   _ __ /\_\  __   __  ___    ____    ____  '
+    echo ' \ \ \ \ \ \ \/\  __`\/\` __\/\ \/\ \ /\ \/ __`\ / ,__\  / ___\ '
     echo '  \ \ \_/ \_\ \ \ \L\ \ \ \/ \ \ \ \ \_/ /\  __//\__, `\/\ \__/ '
     echo '   \ `\___x___/\ \ ,__/\ \_\  \ \_\ \___/\ \____\/\____/\ \____\'
     echo '     \/__//__/  \ \ \/  \/_/   \/_/\/__/  \/____/\/___/  \/____/'
@@ -54,6 +54,22 @@ function suid (){
 			echo -e "$GREENCODE$perm$COLORCLOSE"
 		else
 			echo -e "$REDCODE$perm$COLORCLOSE"
+		fi  
+    done
+}
+
+function userList (){
+	echo -e "${BLUECODE}Usuarios"
+    echo -e "==============${COLORCLOSE}"
+	echo
+
+	USERLIST=$(awk -F: '$3 == 0 || ($3 >= 1000 && $3 <= 2000) {print $1}' /etc/passwd)
+	ACTUALUSER=$(whoami)
+    for user in $USERLIST; do
+		if [ "$user" == "$ACTUALUSER" ]; then
+			echo -e "$GREENCODE$user$COLORCLOSE"
+		else
+			echo -e "$BLUECODE$user$COLORCLOSE"
 		fi  
     done
 }
@@ -99,6 +115,8 @@ separator
 sudoers
 separator
 suid
+separator
+userList
 separator
 listcrontab
 separator
