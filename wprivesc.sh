@@ -44,7 +44,7 @@ function sudoers (){
 
 function suid (){
 	echo -e "${BLUECODE}Permisos SUID"
-    echo -e "==============${COLORCLOSE}"
+	echo -e "==============${COLORCLOSE}"
 	echo
 	
     SUID=$(find / -perm -4000 2>/dev/null)
@@ -103,7 +103,7 @@ function interestingdirs (){
 
 function runproc (){
 	echo -e "${BLUECODE}Procesos en ejecucion"
-    echo -e "=========================${COLORCLOSE}"
+	echo -e "=========================${COLORCLOSE}"
 	echo
 	
     ps aux
